@@ -4,6 +4,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const inputDescricao = document.getElementById('descricao');
     const inputValor = document.getElementById('valor');
     const inputCategoria = document.getElementById('categoria');
+    const totalGastosElement = document.getElementById('total-gastos'); // Novo elemento para exibir o total
+
+    // Array para armazenar os gastos
+    const listaDeGastos = [];
 
     formCadastro.addEventListener('submit', function(event) {
         event.preventDefault(); // Impede o envio padrão do formulário
@@ -18,22 +22,54 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Cria uma nova linha na tabela
-        const novaLinha = corpoTabelaGastos.insertRow();
+        // Adiciona o gasto ao array
+        listaDeGastos.push({ descricao, valor, categoria });
 
-        // Cria as células para cada coluna
-        const celulaDescricao = novaLinha.insertCell();
-        const celulaValor = novaLinha.insertCell();
-        const celulaCategoria = novaLinha.insertCell();
-
-        // Adiciona os valores às células
-        celulaDescricao.textContent = descricao;
-        celulaValor.textContent = valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        celulaCategoria.textContent = categoria;
+        // Atualiza a tabela com a lista de gastos e o total
+        atualizarTabela();
 
         // Limpa os campos do formulário
         inputDescricao.value = '';
         inputValor.value = '';
         inputCategoria.value = '';
     });
+
+    function atualizarTabela() {
+        // Limpa o corpo da tabela antes de adicionar os itens
+        corpoTabelaGastos.innerHTML = '';
+
+        let somaTotal = 0; // Variável para armazenar a soma dos valores
+
+        listaDeGastos.forEach(gasto => {
+            // Cria uma nova linha na tabela
+            const novaLinha = corpoTabelaGastos.insertRow();
+
+            // Cria as células para cada coluna
+            const celulaDescricao = novaLinha.insertCell();
+            const celulaValor = novaLinha.insertCell();
+            const celulaCategoria = novaLinha.insertCell();
+
+            // Adiciona os valores às células
+            celulaDescricao.textContent = gasto.descricao;
+
+            // Formata o valor para moeda brasileira
+            celulaValor.textContent = gasto.valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+            celulaCategoria.textContent = gasto.categoria;
+
+            // Verifica se o valor é maior que 100 e aplica a classe 'valor-alto'
+            if (gasto.valor > 100) {
+                celulaValor.classList.add('valor-alto');
+            }
+
+            // Adiciona o valor atual à soma total
+            somaTotal += gasto.valor;
+        });
+
+        // Atualiza o elemento HTML com o valor total formatado
+        totalGastosElement.textContent = `Total: ${somaTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`;
+    }
+
+    // Exibe a tabela inicialmente (se houver dados já no array - útil se você implementar persistência)
+    atualizarTabela();
 });
