@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
             somaTotal += gasto.valor;
         });
 
-        // Atualiza o elemento HTML com o valor total formatado
+        // Atualiza o elemento html com o valor total 
         totalGastosElement.textContent = `Total: ${somaTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`;
     }
 

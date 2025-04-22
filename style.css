@@ -78,7 +78,7 @@ h1, h2 {
   /* Estilização da tabela */
   .lista-gastos {
     margin: auto;
-    margin-top: 10%;
+    margin-top: 5%;
     background-color: rgba(0, 0, 0, 0.8); /*Fundo semi transparente*/
     padding: 30px 40px;
     border-radius: 15px;
@@ -86,4 +86,9 @@ h1, h2 {
     width: 50%;
     color: #fff;
    
+  }
+
+  /* Tentando adicionar cor de fundo em valores acima de R$100 */
+  #valor-alto {
+    background-color: red;
   }
