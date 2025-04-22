@@ -4,14 +4,17 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Parte do Corpo da página */
 body {
     background-color: rgba(0, 0, 0, 0.116);
 }
 
+/* Títulos */
 h1, h2 {
     text-align: center;
 }
 
+/* Seção de formulário */
 .cadastro-gastos {
     background-color: rgba(0, 0, 0, 0.8); /*Fundo semi transparente*/
     padding: 30px 40px;
@@ -21,6 +24,7 @@ h1, h2 {
     color: #fff;
     margin: auto;
   }
+
 
   .cadastro-gastos h2 {
     text-align: center;
@@ -33,6 +37,7 @@ h1, h2 {
     font-weight: bold;
   }
 
+  /* Estilização dos inputs */
   .form-grupo input[type="text"],
 .form-grupo input[type="number"],
 .form-grupo input[type="text"] {
@@ -44,10 +49,13 @@ h1, h2 {
   color: #fff;
 }
 
+
+/* Efeito quando clicar no input */
 .form-grupo input::placeholder {
     color: #ccc;
   }
 
+  /* Estilização do botão */
   .cadastro-gastos button {
     width: 100%;
     margin: 15px 0;
@@ -62,10 +70,12 @@ h1, h2 {
     transition: 0.3s;
   }
 
+  /* Efeito de passar por cima do botão */
   .cadastro-gastos button:hover {
     background: #00b8cc;
   }
 
+  /* Estilização da tabela */
   .lista-gastos {
     margin: auto;
     margin-top: 10%;
