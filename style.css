@@ -65,3 +65,15 @@ h1, h2 {
   .cadastro-gastos button:hover {
     background: #00b8cc;
   }
+
+  .lista-gastos {
+    margin: auto;
+    margin-top: 10%;
+    background-color: rgba(0, 0, 0, 0.8); /*Fundo semi transparente*/
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px #00f0ff, 0 0 25 px #00f0ff; /*Borda brilhosa*/
+    width: 50%;
+    color: #fff;
+   
+  }
